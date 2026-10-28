@@ -46,7 +46,7 @@ function Contact() {
     if (!formData.email.trim()) {
       newErrors.email = "Please enter your email address.";
     } else if (
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())
     ) {
       newErrors.email = "Please enter a valid email address.";
     }
@@ -66,8 +66,12 @@ function Contact() {
     event.preventDefault();
 
     if (validateForm()) {
+      const subject = `Portfolio contact from ${formData.name.trim()}`;
+      const body = `Name: ${formData.name.trim()}\nEmail: ${formData.email.trim()}\n\nMessage:\n${formData.message.trim()}`;
+      const mailtoLink = `mailto:kaviniki153@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoLink;
       setSubmitted(true);
-      setFormData(initialForm);
     }
   };
 
@@ -124,7 +128,7 @@ function Contact() {
 
               <div className="mt-10 space-y-6">
                 <a
-                  href="mailto:YOUR_EMAIL@example.com"
+                  href="mailto:kaviniki153@gmail.com"
                   className="group flex items-center gap-4"
                 >
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 text-emerald-400 transition group-hover:bg-emerald-500 group-hover:text-white">
@@ -134,7 +138,7 @@ function Contact() {
                   <div>
                     <p className="text-sm text-slate-400">Email</p>
                     <p className="mt-1 break-all font-medium text-white">
-                      YOUR_EMAIL@example.com
+                      kaviniki153@gmail.com
                     </p>
                   </div>
                 </a>
@@ -168,6 +172,15 @@ function Contact() {
               >
                 <Code2 size={22} />
               </a>
+
+              <a
+                href="https://github.com/kavithaa153"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-3 inline-flex items-center gap-2 text-sm font-medium text-slate-300 transition hover:text-emerald-400"
+              >
+                github.com/kavithaa153
+              </a>
             </div>
           </motion.div>
 
@@ -182,7 +195,7 @@ function Contact() {
             </h2>
 
             <p className="mt-2 text-sm leading-6 text-slate-500">
-              Fill in the form below to validate your contact details.
+              Fill in the form below to contact me by email.
             </p>
 
             {submitted && (
@@ -196,8 +209,8 @@ function Contact() {
                 />
 
                 <p>
-                  Validation successful! This demo does not send or save
-                  your message yet.
+                  Your email application should open with your message
+                  prepared. Please send the email to complete your request.
                 </p>
               </div>
             )}
@@ -318,7 +331,7 @@ function Contact() {
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-4 font-semibold text-white shadow-lg shadow-emerald-600/20 transition hover:-translate-y-0.5 hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-200"
               >
                 <Send size={18} />
-                Validate Message
+                Send Message
               </button>
             </form>
           </motion.div>
