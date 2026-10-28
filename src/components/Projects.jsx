@@ -17,7 +17,7 @@ const projects = [
     category: "Dashboard",
     description:
       "A modern e-commerce dashboard for managing products, orders, sales, and business performance.",
-    github: "https://github.com/kavithaa153/ecommerce-dashboard",
+    github: "https://github.com/kavithaa153/storeflow-ecommerce-dashboard/tree/main/ecommerce-dashboard",
     demo: "https://storeflow-ecommerce-dashboard.netlify.app/",
     technologies: ["React", "Vite", "Tailwind CSS"],
     featured: true,
